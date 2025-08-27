@@ -3,49 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Craig Chambers | GuidVox</title>
-    <meta name="description" content="Scan to save Craig’s contact card and reach out directly." />
-    <link rel="stylesheet" href="style.css" />
+    <title>Contact Craig Chambers – GuidVox</title>
 
-    <!-- Google Analytics Tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5034GLXV6"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5034GLKV6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-G5034GLXV6');
+      gtag('config', 'G-5034GLKV6');
     </script>
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #FAFAFA;
+        color: #1A1A1A;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      header {
+        padding: 2rem;
+      }
+      header img {
+        max-width: 200px;
+      }
+      h1 {
+        margin-top: 0.5rem;
+        font-size: 1.5rem;
+      }
+      .contact {
+        margin-top: 2rem;
+        font-size: 1.1rem;
+      }
+      .contact a {
+        color: #0099FF;
+        text-decoration: none;
+        display: block;
+        margin: 0.5rem 0;
+      }
+      .contact a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
+
   <body>
-    <div class="container">
-      <img class="logo" src="guidvox-logo.png" alt="GuidVox Logo" />
-      <h1>Craig Chambers</h1>
-      <p>Managing Director</p>
-      <p>Scan the QR code below to save my contact card, or use the buttons to connect.</p>
-      <img class="qr-code" src="craig-vcard.png" alt="Scan to add Craig's contact details" />
-      <div class="buttons">
-        <a href="mailto:craig@guidvox.com" class="button"
-           onclick="gtag('event', 'email_click', {
-             event_category: 'Contact',
-             event_label: 'Email Craig Click'
-           });">
-          Email Craig
-        </a>
-        <a href="tel:+447500003529" class="button"
-           onclick="gtag('event', 'phone_click', {
-             event_category: 'Contact',
-             event_label: 'Phone Craig Click'
-           });">
-          Call Craig
-        </a>
-        <a href="https://www.guidvox.com" class="button" target="_blank"
-           onclick="gtag('event', 'website_click', {
-             event_category: 'Contact',
-             event_label: 'Visit Website Click'
-           });">
-          Visit Website
-        </a>
-      </div>
+    <header>
+      <img src="full-logo-1.svg" alt="GuidVox Logo" />
+      <h1>Contact Craig Chambers</h1>
+      <p>Managing Director, GuidVox</p>
+    </header>
+
+    <div class="contact">
+      <a href="mailto:craig@guidvox.com" id="email">craig@guidvox.com</a>
+      <a href="tel:+447500003529" id="phone">+44 7500 003529</a>
+      <a href="https://guidvox.com" id="website" target="_blank">guidvox.com</a>
     </div>
+
+    <script>
+      // Event tracking
+      const sendGAEvent = (eventName) => {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, {
+            event_category: 'Contact Page',
+            event_label: 'Contact Click'
+          });
+        }
+      };
+
+      document.getElementById('email').addEventListener('click', () => sendGAEvent('email_click'));
+      document.getElementById('phone').addEventListener('click', () => sendGAEvent('phone_click'));
+      document.getElementById('website').addEventListener('click', () => sendGAEvent('website_click'));
+    </script>
   </body>
 </html>
