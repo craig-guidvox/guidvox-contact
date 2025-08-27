@@ -1,90 +1,170 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Craig Chambers – GuidVox</title>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5034GLKV6"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-5034GLKV6');
-    </script>
-
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background-color: #fafafa;
-        color: #1a1a1a;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 2rem 1rem;
-        min-height: 100vh;
-        text-align: center;
-      }
-
-      img.logo {
-        max-width: 220px;
-        margin-bottom: 1rem;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-        margin: 0.5rem 0;
-      }
-
-      p.title {
-        margin-top: 0;
-        font-weight: 400;
-        color: #5c5c5c;
-      }
-
-      .contact a {
-        color: #0099ff;
-        text-decoration: none;
-        font-size: 1.1rem;
-        display: block;
-        margin: 0.4rem 0;
-      }
-
-      .contact a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-
-  <body>
-    <img src="full-logo-1.svg" alt="GuidVox Logo" class="logo" />
-
-    <h1>Contact Craig Chambers</h1>
-    <p class="title">Managing Director, GuidVox</p>
-
-    <div class="contact">
-      <a href="mailto:craig@guidvox.com" id="email">craig@guidvox.com</a>
-      <a href="tel:+447500003529" id="phone">+44 7500 003529</a>
-      <a href="https://guidvox.com" id="website" target="_blank">guidvox.com</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Craig Chambers | GuidVox</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", system-ui, sans-serif;
+      background: #FAFAFA;
+      color: #1A1A1A;
+      line-height: 1.4;
+    }
+    .wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.06);
+      margin: 18px 0;
+    }
+    img.logo {
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 12px auto 8px;
+    }
+    h1 {
+      margin: 8px 0 4px;
+      font-size: 32px;
+    }
+    .subtitle {
+      margin: 0 0 16px;
+      color: #5C5C5C;
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: #00C8C8;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+      transition: transform .05s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .section-title { font-size: 28px; margin: 4px 0 12px; }
+    form { text-align: left; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; }
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #fff;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .actions { text-align: center; margin-top: 14px; }
+    .notice {
+      color: #5C5C5C;
+      font-size: 13px;
+      margin-top: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <img class="logo" src="full-logo-1.svg" alt="GuidVox logo">
+      <h1>Craig Chambers</h1>
+      <p class="subtitle">The Future of Virtual Tours</p>
+      <button class="btn" id="saveVcardBtn">💾 Save My Contact</button>
+      <p class="notice">Adds Craig to your contacts.</p>
     </div>
 
-    <script>
-      // Track link clicks in GA
-      const trackClick = (id, label) => {
-        document.getElementById(id).addEventListener('click', () => {
-          gtag('event', 'click', {
-            event_category: 'Contact Page',
-            event_label: label
-          });
-        });
-      };
+    <div class="card">
+      <h2 class="section-title">Share Your Info</h2>
+      <form id="contactForm" novalidate>
+        <div style="margin-bottom:12px;">
+          <label for="name">Your Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" autocapitalize="words">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" inputmode="email">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text">
+        </div>
+        <div style="margin-bottom:8px;">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me what you’re after…"></textarea>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn">Send to Craig</button>
+          <p class="notice">Opens your email with the details pre-filled.</p>
+        </div>
+      </form>
+    </div>
 
-      trackClick('email', 'Email Click');
-      trackClick('phone', 'Phone Click');
-      trackClick('website', 'Website Click');
-    </script>
-  </body>
+    <p class="notice">© GuidVox • guidvox.com</p>
+  </div>
+
+  <script>
+    document.getElementById('saveVcardBtn').addEventListener('click', function () {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'N:Chambers;Craig;;;',
+        'FN:Craig Chambers',
+        'ORG:GuidVox',
+        'TITLE:Founder',
+        'TEL;TYPE=CELL:+447500003529',
+        'EMAIL;TYPE=INTERNET:craig@guidvox.com',
+        'URL:https://guidvox.com',
+        'END:VCARD'
+      ].join('\n');
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Craig-Chambers.vcf';
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(url);
+      a.remove();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email) {
+        alert('Please enter your name and email.');
+        return;
+      }
+
+      const subject = `Contacts — ${name}`;
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        company ? `Company: ${company}` : '',
+        '',
+        message ? `Message: ${message}` : ''
+      ].join('\n');
+
+      const mailto = `mailto:craig@guidvox.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  </script>
+</body>
 </html>
