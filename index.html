@@ -16,33 +16,43 @@
 
     <style>
       body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #FAFAFA;
-        color: #1A1A1A;
         margin: 0;
-        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #fafafa;
+        color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem 1rem;
+        min-height: 100vh;
         text-align: center;
       }
-      header {
-        padding: 2rem;
+
+      img.logo {
+        max-width: 220px;
+        margin-bottom: 1rem;
       }
-      header img {
-        max-width: 200px;
-      }
+
       h1 {
-        margin-top: 0.5rem;
-        font-size: 1.5rem;
-      }
-      .contact {
-        margin-top: 2rem;
-        font-size: 1.1rem;
-      }
-      .contact a {
-        color: #0099FF;
-        text-decoration: none;
-        display: block;
+        font-size: 1.8rem;
         margin: 0.5rem 0;
       }
+
+      p.title {
+        margin-top: 0;
+        font-weight: 400;
+        color: #5c5c5c;
+      }
+
+      .contact a {
+        color: #0099ff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: block;
+        margin: 0.4rem 0;
+      }
+
       .contact a:hover {
         text-decoration: underline;
       }
@@ -50,11 +60,10 @@
   </head>
 
   <body>
-    <header>
-      <img src="full-logo-1.svg" alt="GuidVox Logo" />
-      <h1>Contact Craig Chambers</h1>
-      <p>Managing Director, GuidVox</p>
-    </header>
+    <img src="full-logo-1.svg" alt="GuidVox Logo" class="logo" />
+
+    <h1>Contact Craig Chambers</h1>
+    <p class="title">Managing Director, GuidVox</p>
 
     <div class="contact">
       <a href="mailto:craig@guidvox.com" id="email">craig@guidvox.com</a>
@@ -63,19 +72,19 @@
     </div>
 
     <script>
-      // Event tracking
-      const sendGAEvent = (eventName) => {
-        if (typeof gtag === 'function') {
-          gtag('event', eventName, {
+      // Track link clicks in GA
+      const trackClick = (id, label) => {
+        document.getElementById(id).addEventListener('click', () => {
+          gtag('event', 'click', {
             event_category: 'Contact Page',
-            event_label: 'Contact Click'
+            event_label: label
           });
-        }
+        });
       };
 
-      document.getElementById('email').addEventListener('click', () => sendGAEvent('email_click'));
-      document.getElementById('phone').addEventListener('click', () => sendGAEvent('phone_click'));
-      document.getElementById('website').addEventListener('click', () => sendGAEvent('website_click'));
+      trackClick('email', 'Email Click');
+      trackClick('phone', 'Phone Click');
+      trackClick('website', 'Website Click');
     </script>
   </body>
 </html>
